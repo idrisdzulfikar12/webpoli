@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2024 at 12:15 PM
+-- Generation Time: Dec 13, 2024 at 02:02 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -36,17 +36,6 @@ CREATE TABLE `daftar_poli` (
   `status_periksa` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `daftar_poli`
---
-
-INSERT INTO `daftar_poli` (`id`, `id_pasien`, `id_jadwal`, `keluhan`, `no_antrian`, `status_periksa`) VALUES
-(3, 10, 8, 'Sakit tenggorokan perih\r\n', 1, '1'),
-(4, 13, 11, 'Gusi berdarah', 1, '1'),
-(5, 10, 8, 'Telinga sakit', 2, '0'),
-(6, 14, 13, 'Mata Merah', 1, '1'),
-(7, 16, 11, 'sakit', 2, '0');
-
 -- --------------------------------------------------------
 
 --
@@ -58,16 +47,6 @@ CREATE TABLE `detail_periksa` (
   `id_periksa` int(11) NOT NULL,
   `id_obat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `detail_periksa`
---
-
-INSERT INTO `detail_periksa` (`id`, `id_periksa`, `id_obat`) VALUES
-(4, 3, 13),
-(5, 3, 14),
-(6, 4, 19),
-(7, 5, 19);
 
 -- --------------------------------------------------------
 
@@ -89,11 +68,7 @@ CREATE TABLE `dokter` (
 --
 
 INSERT INTO `dokter` (`id`, `nama`, `password`, `alamat`, `no_hp`, `id_poli`) VALUES
-(12, 'Dr. Kusuma Wardana', 'eee462bf8b460595e91b5aab19fd61c2', 'Jl. Terus No.5 RT10/01', '085678876543', 11),
-(13, 'Dr. Andra', '839ddfea673b23c89c87ca5bfd74ac3c', 'Jl. Ramai sekali', '08907524675678', 21),
-(16, 'Novan', '0c646b9d777ee31b005228bdc3d469a1', 'Jl. Raya No.7', '089456543456', 11),
-(19, 'budi', '00dfc53ee86af02e742515cdcf075ed3', 'Jl. Simpang 5', '089234567', 22),
-(20, 'Ahmad', 'a244bc2be4245c022748235a46dedf15', 'Semarang', '082361892715', 10);
+(22, 'ahmad', '61243c7b9a4022cb3f8dc3106767ed12', 'kaliwungu', '087348', 10);
 
 -- --------------------------------------------------------
 
@@ -109,21 +84,6 @@ CREATE TABLE `jadwal_periksa` (
   `jam_selesai` time NOT NULL,
   `aktif` char(1) NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `jadwal_periksa`
---
-
-INSERT INTO `jadwal_periksa` (`id`, `id_dokter`, `hari`, `jam_mulai`, `jam_selesai`, `aktif`) VALUES
-(6, 12, 'Senin', '08:00:00', '12:00:00', 'N'),
-(7, 12, 'Selasa', '13:00:00', '17:00:00', 'N'),
-(8, 12, 'Senin', '18:00:00', '22:00:00', 'Y'),
-(9, 13, 'Senin', '13:00:00', '17:00:00', 'Y'),
-(10, 16, 'Senin', '08:00:00', '12:00:00', 'N'),
-(11, 16, 'Selasa', '13:00:00', '17:00:00', 'Y'),
-(12, 19, 'Senin', '08:00:00', '12:30:00', 'N'),
-(13, 19, 'Senin', '13:00:00', '15:30:00', 'Y'),
-(14, 20, 'Kamis', '08:00:00', '16:00:00', 'N');
 
 -- --------------------------------------------------------
 
@@ -143,9 +103,6 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id`, `nama_obat`, `kemasan`, `harga`) VALUES
-(13, 'Vitamin C', 'Botol Pil', 10000),
-(14, 'Vitamin B Complex', 'Botol Pil', 10000),
-(19, 'Vitamin A', 'Tablet', 8000),
 (21, 'Tetes Mata', 'Botol', 15000);
 
 -- --------------------------------------------------------
@@ -169,10 +126,6 @@ CREATE TABLE `pasien` (
 --
 
 INSERT INTO `pasien` (`id`, `nama`, `password`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
-(10, 'Andra', 'e83ef9da2046e040c6a7017fd6912e08', 'Semarang', '123', '085', '202401-001'),
-(13, 'Budi', '827ccb0eea8a706c4c34a16891f84e7b', 'Semarang', '0987654', '98765', '202401-002'),
-(14, 'Dian', '827ccb0eea8a706c4c34a16891f84e7b', 'Semarang', '9876543', '0878', '202401-003'),
-(16, 'dio', '202cb962ac59075b964b07152d234b70', 'genuk', '23123123', '45678', '202412-005'),
 (18, 'idris', 'b8ae6a99ba9a35d5b53472b3d300951a', 'genuk', '213123433', '238784365743', '202412-007');
 
 -- --------------------------------------------------------
@@ -188,15 +141,6 @@ CREATE TABLE `periksa` (
   `catatan` text NOT NULL,
   `biaya_periksa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `periksa`
---
-
-INSERT INTO `periksa` (`id`, `id_daftar_poli`, `tgl_periksa`, `catatan`, `biaya_periksa`) VALUES
-(3, 3, '2024-01-08 01:07:00', 'silahkan tidur cukup', 170000),
-(4, 6, '2024-01-08 14:15:00', 'sudah sedikit membaik, jangan lupa habiskan obatnya', 158000),
-(5, 4, '2024-12-10 12:50:00', 'istirahat', 158000);
 
 -- --------------------------------------------------------
 
@@ -216,10 +160,7 @@ CREATE TABLE `poli` (
 
 INSERT INTO `poli` (`id`, `nama_poli`, `keterangan`) VALUES
 (10, 'Poli THT', 'Available'),
-(11, 'Poli Gigi', 'Available'),
-(21, 'Poli Gizi', 'kosong'),
-(22, 'Poli Mata Baik', 'kosong'),
-(24, 'Poli Syaraf', 'Kosong');
+(22, 'Poli Mata Baik', 'kosong');
 
 --
 -- Indexes for dumped tables
@@ -300,7 +241,7 @@ ALTER TABLE `detail_periksa`
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `jadwal_periksa`
