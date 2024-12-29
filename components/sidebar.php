@@ -86,20 +86,25 @@
                                 <p>Dashboard <span class="right badge badge-success">Dokter</span></p>
                             </a>
                         </li>
+                        <a href="profileDokter.php" class="nav-link">
+                                <i class="fas fa-solid fa-address-card nav-icon"></i>
+                                <p>Profile Dokter <span class="right badge badge-success">Dokter</span></p>
+                            </a>
+                        </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="jadwalPeriksa.php" class="nav-link">
                                 <i class="fas fa-solid fa-hospital-user nav-icon"></i>
                                 <p>Jadwal Praktek Dokter <span class="right badge badge-success">Dokter</span></p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="periksaPasien.php" class="nav-link">
                                 <i class="fas fa-solid fa-stethoscope nav-icon"></i>
                                 <p>Periksa Pasien <span class="right badge badge-success">Dokter</span></p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="riwayatPasien.php" class="nav-link">
                                 <i class="fas fa-solid fa-book-medical nav-icon"></i>
                                 <p>Riwayat Pasien <span class="right badge badge-success">Dokter</span></p>
                             </a>
@@ -114,7 +119,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="daftarPoliklinik.php" class="nav-link">
                                 <i class="fas fa-solid fa-stethoscope nav-icon"></i>
                                 <p>Daftar Poli <span class="right badge badge-info">Pasien</span></p>
                             </a>
