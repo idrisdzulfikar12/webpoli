@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2024 at 02:02 PM
+-- Generation Time: Dec 30, 2024 at 04:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -36,6 +36,15 @@ CREATE TABLE `daftar_poli` (
   `status_periksa` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `daftar_poli`
+--
+
+INSERT INTO `daftar_poli` (`id`, `id_pasien`, `id_jadwal`, `keluhan`, `no_antrian`, `status_periksa`) VALUES
+(8, 18, 15, 'sakit telinga', 1, '1'),
+(9, 18, 15, 'sakit tenggorokan\r\n', 2, '1'),
+(10, 18, 15, 'dsdad', 3, '1');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +56,15 @@ CREATE TABLE `detail_periksa` (
   `id_periksa` int(11) NOT NULL,
   `id_obat` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `detail_periksa`
+--
+
+INSERT INTO `detail_periksa` (`id`, `id_periksa`, `id_obat`) VALUES
+(8, 6, 21),
+(9, 7, 22),
+(10, 8, 22);
 
 -- --------------------------------------------------------
 
@@ -68,7 +86,8 @@ CREATE TABLE `dokter` (
 --
 
 INSERT INTO `dokter` (`id`, `nama`, `password`, `alamat`, `no_hp`, `id_poli`) VALUES
-(22, 'ahmad', '61243c7b9a4022cb3f8dc3106767ed12', 'kaliwungu', '087348', 10);
+(22, 'ahmad', '61243c7b9a4022cb3f8dc3106767ed12', 'kaliwungu', '087348', 10),
+(23, 'Dzul', '21fa67c5d05bb3da39be41221806aa04', 'Kaliwungu', '908976543', 25);
 
 -- --------------------------------------------------------
 
@@ -84,6 +103,13 @@ CREATE TABLE `jadwal_periksa` (
   `jam_selesai` time NOT NULL,
   `aktif` char(1) NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jadwal_periksa`
+--
+
+INSERT INTO `jadwal_periksa` (`id`, `id_dokter`, `hari`, `jam_mulai`, `jam_selesai`, `aktif`) VALUES
+(15, 22, 'Senin', '07:00:00', '15:30:00', 'N');
 
 -- --------------------------------------------------------
 
@@ -103,7 +129,9 @@ CREATE TABLE `obat` (
 --
 
 INSERT INTO `obat` (`id`, `nama_obat`, `kemasan`, `harga`) VALUES
-(21, 'Tetes Mata', 'Botol', 15000);
+(21, 'Tetes Mata', 'Botol', 15000),
+(22, 'Vitamin C', 'tablet', 10000),
+(23, 'Paracetamol', 'Tablet', 8000);
 
 -- --------------------------------------------------------
 
@@ -126,7 +154,8 @@ CREATE TABLE `pasien` (
 --
 
 INSERT INTO `pasien` (`id`, `nama`, `password`, `alamat`, `no_ktp`, `no_hp`, `no_rm`) VALUES
-(18, 'idris', 'b8ae6a99ba9a35d5b53472b3d300951a', 'genuk', '213123433', '238784365743', '202412-007');
+(18, 'idris', 'b8ae6a99ba9a35d5b53472b3d300951a', 'genuk', '213123433', '238784365743', '202412-007'),
+(19, 'fikar', 'ccf61773eaa981c3f0e7f44742b9d06d', 'kaliwungu', '232132443', '586799809', '202412-008');
 
 -- --------------------------------------------------------
 
@@ -141,6 +170,15 @@ CREATE TABLE `periksa` (
   `catatan` text NOT NULL,
   `biaya_periksa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `periksa`
+--
+
+INSERT INTO `periksa` (`id`, `id_daftar_poli`, `tgl_periksa`, `catatan`, `biaya_periksa`) VALUES
+(6, 8, '2024-12-30 10:30:00', 'istirahat', 165000),
+(7, 9, '2024-12-29 07:44:00', 'dasfdsf', 160000),
+(8, 10, '2025-01-03 06:28:00', 'dsfdsf', 160000);
 
 -- --------------------------------------------------------
 
@@ -160,7 +198,8 @@ CREATE TABLE `poli` (
 
 INSERT INTO `poli` (`id`, `nama_poli`, `keterangan`) VALUES
 (10, 'Poli THT', 'Available'),
-(22, 'Poli Mata Baik', 'kosong');
+(22, 'Poli Mata Baik', ''),
+(25, 'Poli Umum', '');
 
 --
 -- Indexes for dumped tables
@@ -229,49 +268,49 @@ ALTER TABLE `poli`
 -- AUTO_INCREMENT for table `daftar_poli`
 --
 ALTER TABLE `daftar_poli`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `detail_periksa`
 --
 ALTER TABLE `detail_periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `jadwal_periksa`
 --
 ALTER TABLE `jadwal_periksa`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `poli`
 --
 ALTER TABLE `poli`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Constraints for dumped tables
