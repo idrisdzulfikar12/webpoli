@@ -32,13 +32,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else{
         // Query untuk menambahkan data obat ke dalam tabel
-        $query = "UPDATE jadwal_periksa SET hari = '$hari', jam_mulai = '$jamMulai', jam_selesai = '$jamSelesai', aktif = '$aktif' WHERE id = '$id'";
 
         
 
         // if ($koneksi->query($query) === TRUE) {
         // Eksekusi query
-        if (mysqli_query($mysqli, $query)) {
+        if (mysqli_query($mysqli, $setAktifQuery)) {
             // Jika berhasil, redirect kembali ke halaman utama atau sesuaikan dengan kebutuhan Anda
             // header("Location: ../../index.php");
             // exit();

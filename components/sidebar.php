@@ -85,8 +85,9 @@
                                 <i class="fas fa-solid fas fa-th nav-icon"></i>
                                 <p>Dashboard <span class="right badge badge-success">Dokter</span></p>
                             </a>
-                        </li>
-                        <a href="profileDokter.php" class="nav-link">
+                    </li>
+                        <li class="nav-item">
+                            <a href="profileDokter.php" class="nav-link">
                                 <i class="fas fa-solid fa-address-card nav-icon"></i>
                                 <p>Profile Dokter <span class="right badge badge-success">Dokter</span></p>
                             </a>

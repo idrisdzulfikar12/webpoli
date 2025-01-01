@@ -62,12 +62,12 @@
                                                 <div class="form-group">
                                                     <label for="jamMulai">Jam Mulai</label>
                                                     <input type="time" class="form-control" id="jamMulai"
-                                                        name="jamMulai" required>
+                                                        name="jamMulai">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="jamSelesai">Jam Selesai</label>
                                                     <input type="time" class="form-control" id="jamSelesai"
-                                                        name="jamSelesai" required>
+                                                        name="jamSelesai">
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Tambah</button>
                                             </form>
@@ -206,7 +206,7 @@
                                                             value="<?php echo $data['id'] ?>" required>
                                                         <div class="form-group">
                                                             <label for="hari">Hari</label>
-                                                            <select class="form-control" id="hari" name="hari">
+                                                            <select class="form-control" id="hari" name="hari" disabled>
                                                                 <?php
                                                                 $hariArray = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
                                                                 foreach($hariArray as $hari){
@@ -221,13 +221,13 @@
                                                             <label for="jamMulai">Jam Mulai</label>
                                                             <input type="time" class="form-control" id="jamMulai"
                                                                 name="jamMulai" required
-                                                                value="<?= $data['jam_mulai'] ?>">
+                                                                value="<?= $data['jam_mulai'] ?>" disabled>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="jamSelesai">Jam Selesai</label>
                                                             <input type="time" class="form-control" id="jamSelesai"
                                                                 name="jamSelesai" required
-                                                                value="<?= $data['jam_selesai'] ?>">
+                                                                value="<?= $data['jam_selesai'] ?>" disabled>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="aktif">Aktif</label>
