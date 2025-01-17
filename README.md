@@ -1,6 +1,6 @@
 Login Dokter
 Username : NamaDokter
-Password : NamaDokter
+Password : alamat
 
 Login Pasien
 Username : Pasien
